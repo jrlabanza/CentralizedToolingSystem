@@ -1,0 +1,54 @@
+[?7/?7/?2020 4:57 PM]  Kim De Villa:  
+No Title 
+    Sub GetPicture(ByVal sname As String)
+        Using user As New DirectoryEntry("_LDAP://" & sname)
+            If user.Properties.Contains("thumbnailPhoto") Then '<--This makes sure the property actually exists and has a value
+                Dim bytBLOBData() As Byte = CType((user.Properties("thumbnailPhoto")(0)), Byte()) 'use 0 here because this attribute only has one value
+                Dim myimage As Image
+                Dim ms As System.IO.MemoryStream = New System.IO.MemoryStream(bytBLOBData)
+                myimage = System.Drawing.Image.FromStream(ms)
+                PictureBox1.Image = myimage
+                PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+            Else
+                PictureBox1.Image = Properties.Resources.ResourceManager.GetObject("thumb_ser.png")
+                'HttpContext.Current.Session.Add("acc_photo", "")
+            End If
+        End Using
+    End Sub 
+ 
+
+[?7/?7/?2020 1:21 PM]  Kim De Villa:  
+No Title 
+Private Sub loadUserProperties(ByVal up As UserPrincipal, ByVal nme As String)
+        dgvUserProperties.DataSource = Nothing
+        dtProperties = New DataTable
+        dtProperties.Columns.Add("Property")
+        dtProperties.Columns.Add("Values")
+        Try
+            'de.RefreshCache()
+            Dim de As DirectoryEntry = CType(up.GetUnderlyingObject(), DirectoryEntry)
+            Dim ds As DirectorySearcher = New DirectorySearcher(de)
+            ds.Filter = "(samaccountname=" & nme & ")"
+            'ds.PropertiesToLoad.Add(prop)
+            ds.PageSize = 1000
+            Dim srt As SearchResult = ds.FindOne()
+            If srt.GetDirectoryEntry().Properties.Values.Count > 0 Then
+                Dim ctr As Integer = 0
+                For Each pr As String In srt.GetDirectoryEntry().Properties.PropertyNames
+                    For Each pc As Object In srt.GetDirectoryEntry().Properties(pr)
+                        dtProperties.Rows.Add(pr, pc.ToString)
+                    Next
+                    ToolStripProgressBar1.Value = (ctr / srt.GetDirectoryEntry().Properties.Values.Count) * 100
+                    ctr += 1
+                Next
+                'Dim trye As String = srt.GetDirectoryEntry().Properties.PropertyNames("adminDisplayName").ToString
+                ToolStripProgressBar1.Value = 100
+                dgvUserProperties.DataSource = dtProperties
+            End If
+        Catch ex As Exception
+        Finally
+        End Try
+    End Sub 
+ 
+
+
