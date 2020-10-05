@@ -10,7 +10,7 @@ if (empty($_SESSION['line'])){
 	$sql = "SELECT * FROM chipmount_nozzle WHERE line = '$_SESSION[line]' ORDER BY last_update DESC";
 }
 
-$paginationlink = "models/chimountNozzle/pagiResChipmountNozzle.php?page=";
+$paginationlink = "models/chipmountNozzle/pagiResChipmountNozzle.php?page=";
 // $pagination_setting = $_GET["pagination_setting"];
 $pagination_setting = "all-links";
 

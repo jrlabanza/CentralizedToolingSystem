@@ -539,7 +539,34 @@ switch($cat)
           }else{
             echo "<th colspan='20' class='text-center bg-warning' scope=''>SEARCH RESULT: 0</th>";
           }
-          break;            
+          break;    
+        case "CABLE":
+          $result = $conn->query('SELECT * FROM cable WHERE serial_id LIKE "%'.$id.'%" OR tst_pf LIKE "%'.$id.'%"');
+          $count=mysqli_num_rows($result);
+          // $cntr = 0;
+          if ($count > 0){
+            while ($row = $result->fetch_assoc()) {
+              echo "<tr>
+                <td class='tblID' scope=''><input type='checkbox' name='cbox' value='$row[id]'></td>
+                <td class='srID'>$row[serial_id]</td>
+                <td class='fam'>$row[conn_type]</td>
+                <td class='stats'>$row[status]</td>
+                <td class=''>$row[tester_id]</td>
+                <td class='tst'>$row[tst_pf]</td>
+                <td class='loc'>$row[loc]</td>
+                <td class='strg'>$row[storage]</td>
+                <td class=''>$row[remarks]</td>
+                <td class='line'>$row[line]</td>
+                <td class=''>$row[last_update]</td>
+              </tr>";
+            }
+            echo "<tr>
+              <th colspan='20' class='text-center bg-success' scope='row'>SEARCH RESULT: $count</th>
+            </tr>";
+          }else{
+            echo "<th colspan='20' class='text-center bg-warning' scope=''>SEARCH RESULT: 0</th>";
+          }
+          break;                         
     default:
         break;
 }

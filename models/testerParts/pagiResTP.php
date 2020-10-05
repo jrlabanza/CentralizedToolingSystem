@@ -97,8 +97,8 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 							<td class="dscrptn">' . $faq[$k]['dscrptn'] . '</td>
 							<td class="prt_no">' . $faq[$k]['prt_no'] . '</td>
 							<td class="quantity">' . $faq[$k]['quantity'] . '</td>
-							<td class="installedTo">' . $faq[$k]['srl_no'] . '</td>
-							<td class="srl_no" hidden>' . $faq[$k]['srl_no'] . '</td>
+							<td class="srl_no">' . $faq[$k]['srl_no'] . '</td>
+							<td class="cost" hidden>' . $faq[$k]['srl_no'] . '</td>
 							<td class="vendor">' . $faq[$k]['vendor'] . '</td>
 							<td class="mchn_model">' . $faq[$k]['mchn_model'] . '</td>
 							<td class="lction">' . $faq[$k]['lction'] . '</td>

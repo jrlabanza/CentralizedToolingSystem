@@ -5,12 +5,12 @@ $db_handle = new DBController();
 $perPage = new PerPage();
 
 if (empty($_SESSION['line'])){
-	$sql = "SELECT * from cable WHERE isDeleted = 0 ORDER BY id DESC";
+	$sql = "SELECT * from test_stand ORDER BY id DESC";
 }else{
-	$sql = "SELECT * FROM cable WHERE isDeleted = 0 AND line = '$_SESSION[line]' ORDER BY id DESC";
+	$sql = "SELECT * FROM test_stand WHERE line = '$_SESSION[line]' ORDER BY id DESC";
 }
 
-$paginationlink = "models/delItems/delResCable.php?page=";
+$paginationlink = "models/delItems/delResTT.php?page=";
 // $pagination_setting = $_GET["pagination_setting"];
 $pagination_setting = "all-links";
 
@@ -45,37 +45,42 @@ if(!empty($perpageresult)) {
 $output .= '<table id="keywords" class="table table-bordered table-sm-responsive table-hover">
 	<thead id="thead" class="thead-light">
 		<tr>
-			<th scope="col" class="col-sm-0"></th>
-			<th scope="col" class="col-sm-1">SERIAL ID</th>
-			<th scope="col" class="col-sm-1">CONNECTION TYPE</th>
-			<th scope="col" class="col-sm-1">STATUS</th>
-			<th scope="col" class="col-sm-1">TESTER ID</th>
-			<th scope="col" class="col-sm-1">TESTER PF</th>
-			<th scope="col" class="col-sm-1">LOCATION</th>
-			<th scope="col" class="col-sm-1">RACK</th>
-			<th scope="col" class="col">REMARKS</th>
-			<th scope="col" class="col-sm-1">LINE</th>
-			<th scope="col" class="col-sm-1">TRANSACT DATE</th>
+		<th scope="col" class="col-sm-0"></th>
+		<th scope="col" class="col-sm-1">SERIAL ID</th>
+		<th scope="col" class="col-sm-1">FAMILY</th>
+		<th scope="col" class="col-sm-1">TST PF</th>
+		<th scope="col" class="col-sm-1">STATUS</th>
+		<th scope="col" class="col-sm-1">TST ID</th>
+		<th scope="col" class="col-sm-1">HD ID</th>
+		<th scope="col" class="col-sm-1">LOCATION</th>
+		<th scope="col" class="col-sm-1">RACK</th>
+		<th scope="col" class="col-sm-1">VENDOR</th>
+		<th scope="col" class="col">REMARKS</th>
+		<th scope="col" class="col-sm-1">LINE</th>
+		<th scope="col" class="col-sm-1">TRANSACT DATE</th>
 		</tr>
 	</thead>
 	<tbody id="tbody2">';
 
 	if ($_GET["rowcount"] > 0){
+		$style = 'style="cursor: pointer;"';
 		foreach($faq as $k=>$v) {
-			$output .= '
-					<tr>
-						<td class="tblID" scope=""><input type="checkbox" name="cbox" value="'.$faq[$k]['id'].'"></td>
-						<td class="srID">' . $faq[$k]['serial_id'] . '</td>
-						<td class="fam">' . $faq[$k]['conn_type'] . '</td>
-						<td class="stats">' . $faq[$k]['status'] . '</td>
-						<td class="">' . $faq[$k]['tester_id'] . '</td>
-						<td class="tst">' . $faq[$k]['tst_pf'] . '</td>
-						<td class="loc">' . $faq[$k]['loc'] . '</td>
-						<td class="strg">' . $faq[$k]['storage'] . '</td>
-						<td class="">' . $faq[$k]['remarks'] . '</td>
-						<td class="line">' . $faq[$k]['line'] . '</td>
-						<td class="">' . $faq[$k]['last_update'] . '</td>
-					</tr>';
+	
+			$output .= '<tr '.$style.' data-tester-parts='. $faq[$k]['id'] .'>
+							<td class="tblID" scope=""><input type="checkbox" name="cbox" value="'.$faq[$k]['id'].'"></td>
+							<td class="srID">' . $faq[$k]['serial_id'] . '</td>
+							<td class="fam">' . $faq[$k]['family'] . '</td>
+							<td class="tst">' . $faq[$k]['tst_pf'] . '</td>
+							<td class="stats">' . $status . '</td>
+							<td class="tstID">' . $faq[$k]['tester_id'] . '</td>
+							<td class="hdID">' . $faq[$k]['handler_id'] . '</td>
+							<td class="loc">' . $faq[$k]['loc'] . '</td>
+							<td class="strg">' . $faq[$k]['rack'] . '</td>
+							<td class="ven">' . $faq[$k]['vendor'] . '</td>
+							<td class="">' . $faq[$k]['remarks'] . '</td>
+							<td class="line">' . $faq[$k]['line'] . '</td>
+							<td class="updated">' . $faq[$k]['last_update'] . '</td>
+						</tr>';
 		}
 	}else{
 		$output .= '

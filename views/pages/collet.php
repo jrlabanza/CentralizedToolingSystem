@@ -176,7 +176,7 @@ function changePagination(option) {
 <div id="overlay"><div><img src="public/img/loading.svg" width="64px" height="64px"/></div></div>
 <div class="page-content"  style="width: 1600px;">
 	<div style="border-bottom: #F0F0F0 1px solid;margin-bottom: 15px;">
-		<h2>COLLET SECTION</h2>
+		<h2>METAL / VESPEL SECTION</h2>
 		<div class="form-group">
 		<div class="row">
 		<div class="col-md-4"><label for="name">SEARCH</label><input type="text" class="form-control" id="colletID">

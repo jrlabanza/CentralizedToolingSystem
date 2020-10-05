@@ -3,7 +3,7 @@ require('../../frameworks/ajaxConn.php');
 date_default_timezone_set("Asia/Manila");
 $dates=(date("y.m.d"));
 
-$result = $conn->query('SELECT serial_id, lb_id, family, tst_pf, status, tester_id, handler_id, hd_pf, loc, storage, line, vendor, last_update, clerk, sFile, n_plus, remarks FROM loadboard ORDER BY serial_id ASC');
+$result = $conn->query('SELECT serial_id, disc_no, pkg_type, fam_name, test_type, tester_name, handler_id, program, status, loc, storage, remarks, line, last_update, clerk FROM program ORDER BY serial_id ASC');
 $file_ending = "xls";
 //header info for browser
 header("Content-Type: application/xls");
@@ -17,7 +17,7 @@ $sep = "\t"; //tabbed character
 //for ($i = 0; $i < mysqli_num_fields($result); $i++) {
 //echo mysqli_field_name($result,$i) . "\t";
 //}
-echo "SERIAL ID".$sep."LB ID".$sep."DUT BOARD NAME".$sep."TESTER PF".$sep."STATUS".$sep."TESTER ID".$sep."HANDLER ID".$sep."HANDLER PF".$sep."LOCATION".$sep."STORAGE".$sep."LINE".$sep."VENDOR".$sep."TRANSACT DATE".$sep."CUSTODIAN".$sep."S FILE".$sep."N++".$sep."REMARKS";
+echo "SERIAL ID".$sep."DISC NO".$sep."PACKAGE TYPE".$sep."FAMILY NAME".$sep."TEST TYPE".$sep."TESTER ID".$sep."HANDLER ID".$sep."PROGRAM".$sep."STATUS".$sep."LOCATION".$sep."STORAGE".$sep."REMARKS".$sep."LINE".$sep."LAST UPDATE".$sep."CLERK";
 print("\n");
 //end of printing column names
 //start while loop to get data

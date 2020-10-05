@@ -1,7 +1,6 @@
 ﻿$(document).on("click",".tbody tr",function(){
 	$(this).addClass("selected");
 	var tblID = $('.tblID',this).html();
-
 	var srID = $('.srID',this).html();
 	var lbID = $('.lbID',this).html();
 	var fam = $('.fam',this).html();
@@ -55,6 +54,16 @@
 	var date_time = $(".date_time", this).html();
 	var current_quantity = $(this).attr("data-current-quantity");
 	var status = $(".status",this).html();
+	// Program
+
+	var disc_no = $(".disc_no", this).html();
+	var pkg_type = $(".pkg_type", this).html();
+	var fam_name = $(".fam_name", this).html();
+	var test_type = $(".test_type", this).html();
+	var tester_name = $(".tester_name", this).html();
+	var program = $(".program", this).html();
+	var tst_pf = $(".tst_pf", this).html();
+	var rack = $(".rack", this).html();
 
 	//
 
@@ -67,6 +76,7 @@
 	var lction = $(".lction",this).html();
 	var mchn_model = $(".mchn_model",this).html();
 	var line = $(".line",this).html();
+	var cost = $(".cost",this).html();
 
 	//bibID
 
@@ -137,6 +147,16 @@
 	$("#getPackage").val(packageType);
 	$("#getSize").val(size);
 	$("#geFinalResult").val(ckResult);
+	$(".getCost").val(cost);
+	// program
+
+	$("#getDiskNo").val(disc_no);
+	$("#getFam").val(fam_name);
+	$("#getTesterName").val(tester_name);
+	$("#getProgram").val(program);
+	$("#getPkgType").val(pkg_type);
+	$("#getTestType").val(test_type);
+	
 
 	$(".progress-bar").css("width","0%");
 
@@ -210,6 +230,9 @@
 	$(".getPartsCode").val(parts_code);
 	// $(".getMaker").val(maker);
 	// $(".getMachine").val(machine);
+	$(".getFamily").val(fam);
+	$(".getTSTPF").val(tst_pf);
+	$(".getRack").val(rack);
 
 	$("#srID").val(td0);
 
@@ -658,14 +681,18 @@ $('#trkBibID').keypress(function (e) {
 	var key = e.which;
 	if(key == 13)  // the enter key code
 	{
-
+		function regex_escape(str) {
+			return str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\-]', 'g'), '\\$&');
+		}
 		var id=$(this).val();
-		var dataString = 'id='+ id;
+		var dataString = regex_escape(id);
 
 		$.ajax({
 			type: "POST",
 			url: "models/bib/getTrkBIB.php",
-			data: dataString,
+			data: {
+				"id": dataString
+			},
 			cache: false,
 			success: function(html){
 			$(".trkBIBRes").html(html);
@@ -859,14 +886,21 @@ $('#bibID').keypress(function (e) {
 var key = e.which;
 if(key == 13)  // the enter key code
 	{
-
+		
 		var id=$(this).val();
-		var dataString = 'id='+ id;
+		var dataString = "";
 
+		function regex_escape(str) {
+			return str.replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\-]', 'g'), '\\$&');
+		}
+		dataString = regex_escape(id);
+		
 		$.ajax({
 			type: "POST",
 			url: "models/bib/getID.php",
-			data: dataString,
+			data: {
+				'id': dataString
+			},
 			cache: false,
 			success: function(html){
 				if (id == ""){
@@ -1946,6 +1980,9 @@ $(document).on("click","#delBttnSearch",function(){
 		case "PG":
 			refresh = "models/delItems/delResPG.php";	
 			break;
+		case "CABLE":
+			refresh = "models/delItems/delResCable.php";	
+			break;
 		default:
 			break;
 
@@ -2336,37 +2373,39 @@ $(document).on("click","#saveAdd",function(){
 				}
 				break;
 		case "PG":
-			var trimName = $("#userImage")[0].files[0].name;
+			// var trimName = $("#userImage")[0].files[0].name;
 			$.ajax({
 				type: "POST",
 				url: "models/addItems/saveItem.php",
+				// data: {cat:cat,td1:td1,td2:td2,td3:td3,td4:td4,td5:td5,
+				// 	td6:td6,td7:td7,td8:td8,td9:td9,file:trimName},
 				data: {cat:cat,td1:td1,td2:td2,td3:td3,td4:td4,td5:td5,
-					td6:td6,td7:td7,td8:td8,td9:td9,file:trimName},
+					td6:td6,td7:td7,td8:td8,td9:td9},
 				cache: false,
 				success: function(html){
 					//console.log(html);
 					$("#message").html(html);
-					var image = $("#userImage")[0].files[0];
-					if(image != null){
+					// var image = $("#userImage")[0].files[0];
+					// if(image != null){
 												
-						var formData = new FormData();
-						formData.append("Image", image);
-						formData.append("cat", cat);
-						$.ajax({
-							url: "models/uploadItems/uploadItems.php",
-							type: "POST",
-							data: formData,				
-							contentType: false,
-							processData:false,
-							success: function(data)
-							{
+					// 	var formData = new FormData();
+					// 	formData.append("Image", image);
+					// 	formData.append("cat", cat);
+					// 	$.ajax({
+					// 		url: "models/uploadItems/uploadItems.php",
+					// 		type: "POST",
+					// 		data: formData,				
+					// 		contentType: false,
+					// 		processData:false,
+					// 		success: function(data)
+					// 		{
 										
-							},
-							error: function() 
-							{
-							} 	        
-					   });
-					}
+					// 		},
+					// 		error: function() 
+					// 		{
+					// 		} 	        
+					//    });
+					// }
 				}
 			});
 		break;
@@ -2408,7 +2447,20 @@ $(document).on("click","#saveAdd",function(){
 					$("#message").html(html);
 				}
 			});
-			break;		
+			break;
+		case "TT":
+			$.ajax({
+				type: "POST",
+				url: "models/addItems/saveItem.php",
+				data: {cat:cat,td1:td1,td2:td2,td3:td3,td4:td4,td5:td5,
+					td6:td6},
+				cache: false,
+				success: function(html){
+					//console.log(html);
+					$("#message").html(html);
+				}
+			});
+			break;				
 		default:
 			break;
 	}
@@ -3145,7 +3197,23 @@ $(document).on("click","#update",function(){
 				}
 			});
 			break;		
-			
+		case "TT":
+			$.ajax({
+				type: "POST",
+				url: "models/editItems/update.php",
+				data: {cat:cat,td0:td0,td1:td1,td2:td2,td3:td3,td4:td4,td5:td5,
+					td6:td6},
+				cache: false,
+				success: function(html){
+					//console.log(html);
+					// if (keyword != ""){
+					// 	$("#delBttnSearch").click();
+					// }
+					$("#message").html(html);
+					$("#editBttnSearch").click();
+				}
+			});
+			break;		
 		default:
 			break;
 	}

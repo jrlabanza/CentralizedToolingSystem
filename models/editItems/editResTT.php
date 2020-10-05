@@ -4,8 +4,13 @@ require_once("../post.php");
 $db_handle = new DBController();
 $perPage = new PerPage();
 
-$sql = "SELECT * FROM bib_history ORDER BY date_time DESC";
-$paginationlink = "models/bib/pagiResBIBHis.php?page=";
+if (empty($_SESSION['line'])){
+	$sql = "SELECT * from test_stand ORDER BY id DESC";
+}else{
+	$sql = "SELECT * FROM test_stand WHERE line = '$_SESSION[line]' ORDER BY id DESC";
+}
+
+$paginationlink = "models/editItems/editResTT.php?page=";
 // $pagination_setting = $_GET["pagination_setting"];
 $pagination_setting = "all-links";
 
@@ -36,48 +41,48 @@ if(!empty($perpageresult)) {
 }else{
 	$output = '';
 }
-
+$style = 'style="cursor: pointer;"';
 $output .= '<table id="keywords" class="table table-bordered table-sm-responsive table-hover">
 	<thead id="thead" class="thead-light">
-		<tr>
-		<th scope="col" class="col-sm-0">DATE / TIME</th>
+	<tr>
 		<th scope="col" class="col-sm-0">SERIAL ID</th>
-		<th scope="col" class="col-sm-0">BARCODE</th>
-		<th scope="col" class="col-sm-0">BIB ID</th>
 		<th scope="col" class="col-sm-0">FAMILY</th>
+		<th scope="col" class="col-sm-0">TESTER PLATFORM</th>
 		<th scope="col" class="col-sm-0">STATUS</th>
+		<th scope="col" class="col-sm-0">TESTER ID</th>
+		<th scope="col" class="col-sm-0">HANDLER ID</th>
+		<th scope="col" class="col-sm-0">HANDLER PLATFORM</th>
 		<th scope="col" class="col-sm-0">LOCATION</th>
-		<th scope="col" class="col-sm-0">STORAGE</th>
-		<th scope="col" class="col-sm-0">REMARKS</th>
+		<th scope="col" class="col-sm-0">RACK</th>
 		<th scope="col" class="col-sm-0">LINE</th>
-		<th scope="col" class="col-sm-0">CLERK</th>
+		<th scope="col" class="col-sm-0">PERSONEL</th>
+		<th scope="col" class="col-sm-0">DATE /TIME</th>
 	</tr>
 	</thead>
-	<tbody class="">';
+	<tbody class="tbody">';
 
 	if ($_GET["rowcount"] > 0){
 		foreach($faq as $k=>$v) {
-			$output .= '
-					<tr>
-					<td class="" scope="row">' . $faq[$k]['date_time'] . '</td>
-					<td class="srID" scope="row">' . $faq[$k]['serial_id'] . '</td>
-					<td class="fam">' . $faq[$k]['barcode'] . '</td>
-					<td class="tst">' . $faq[$k]['bib_id'] . '</td>
-					<td class="stats">' . $faq[$k]['family'] . '</td>
-					<td class="tstID">' . $faq[$k]['status'] . '</td>
-					<td class="loc">' . $faq[$k]['loc'] . '</td>
-					<td class="strg">' . $faq[$k]['storage'] . '</td>
-					<td class="line">' . $faq[$k]['remarks'] . '</td>
-					<td class="line">' . $faq[$k]['line'] . '</td>
-					<td class="updated">' . $faq[$k]['clerk'] . '</td>
-							</tr>';
-			// $output .= '<div class="question"><input type="hidden" id="rowcount" name="rowcount" value="' . $_GET["rowcount"] . '" />' . $faq[$k]["lb_id"] . '</div>';
-			// $output .= '<div class="answer">' . $faq[$k]["family"] . '</div>';
+	
+			$output .= '<tr '.$style.' data-tester-parts='. $faq[$k]['id'] .'>
+							<td class="srl_no">'. $faq[$k]['serial_id'] .'</td>
+							<td class="fam">' . $faq[$k]['family'] . '</td>
+							<td class="tst_pf">' . $faq[$k]['tst_pf'] . '</td>
+							<td class="status">' . $faq[$k]['status'] . '</td>
+							<td class="tester_id">' . $faq[$k]['tester_id'] . '</td>
+							<td class="handler_id">' . $faq[$k]['handler_id'] . '</td>
+							<td class="hd_pf">' . $faq[$k]['hd_pf'] . '</td>
+							<td class="loc">' . $faq[$k]['loc'] . '</td>
+							<td class="rack">' . $faq[$k]['rack'] . '</td>
+							<td class="line">' . $faq[$k]['line'] . '</td>
+							<td class="clerk">' . $faq[$k]['clerk'] . '</td>
+							<td class="date_time">' . $faq[$k]['date_time'] . '</td>
+						</tr>';
 		}
 	}else{
 		$output .= '
 		<tr style="cursor: pointer;">
-			<td colspan="15" class="text-center"><strong>ZERO RESULTS<strong></td>
+			<td colspan="15" class="text-center"><strong>EMPTY RESULTS<strong></td>
 		</tr>';
 	}
 

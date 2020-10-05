@@ -6,7 +6,7 @@
       BURN IN BOARD HISTORY
     </div>
     <div class="card-body">
-      <form class="form-inline" method="post" action="models/exportData.php">
+      <form class="form-inline" method="post" action="models/bib/exportData.php">
           <input type="text" name="serialID" class="form-control mb-2 mr-sm-2 IDHist" id="lbIDHist" placeholder="SERIAL ID">
           <input name="from" id="from" class="form-control mb-2 mr-sm-2 datepicker from" type="text" placeholder="START DATE">
           <input name="to" id="to" class="form-control mb-2 mr-sm-2 datepicker to" type="text" placeholder="END DATE">

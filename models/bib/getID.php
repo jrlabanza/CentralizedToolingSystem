@@ -4,7 +4,7 @@ require('../../frameworks/ajaxConn.php');
 //
 if($_POST['id']){
 	$id=$_POST['id'];
-	$result = $conn->query('SELECT * FROM bib WHERE serial_id LIKE "%'.$id.'%"');
+	$result = $conn->query('SELECT * FROM bib WHERE barcode LIKE "%'.$id.'%" OR serial_id LIKE "%'.$id.'%"');
 	while ($row = $result->fetch_assoc()) {
 
       echo "<tr style='cursor: pointer;'>

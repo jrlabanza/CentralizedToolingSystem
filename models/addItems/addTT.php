@@ -14,7 +14,7 @@
 				<div class="col-sm-6">
           LINE:<input id="td4" name="line" type="text" class="form-control mb-2" tabindex="-1">
 					RACK:<input id="td5" name="storage" type="text" class="form-control mb-2" tabindex="-1">
-          Remarks:<textarea id="remarks" name="remarks" class="form-control mb-2" rows="1"></textarea>
+          Remarks:<textarea id="td6" name="remarks" class="form-control mb-2" rows="1"></textarea>
 				</div>
 			</div>
             <div class="card-footer">

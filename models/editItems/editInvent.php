@@ -65,7 +65,10 @@ switch ($cat)
 		break;	
 	case "SPANKER":
 		include('editInventSpanker.php');
-		break;		
+		break;
+	case "TT":
+		include('editInventTT.php');
+		break;				
 	default:
 		break;
 }

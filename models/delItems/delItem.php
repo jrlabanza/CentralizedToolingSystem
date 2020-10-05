@@ -247,7 +247,19 @@ switch($cat)
         }
     
         $db->query("DELETE from spanker WHERE id in ('$dataID')");
-        break;                
+        break; 
+    case "TT":
+        $dataID = implode("','", $id);
+
+        $db = Db::getInstance();
+        $req = $db->query("SELECT * from test_stand WHERE id in ('$dataID')");
+    
+        foreach($req->fetchAll() as $post) {
+            $db->query("INSERT INTO test_stand_archive SELECT * FROM test_stand WHERE id=$post[id]");
+        }
+    
+        $db->query("DELETE from test_stand WHERE id in ('$dataID')");
+        break;                       
     default:
         break;
 }

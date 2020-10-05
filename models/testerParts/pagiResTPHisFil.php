@@ -47,6 +47,7 @@ echo '<table id="keywords" class="table table-bordered table-sm-responsive table
 	<th scope="col" class="col-sm-0">COST($)</th>
 	<th scope="col" class="col-sm-0">PERSONEL</th>
 	<th scope="col" class="col-sm-0">DATE /TIME</th>
+	<th scope="col" class="col-sm-0">INSTALLED TO</th>
 	</tr>
 </thead>
 <tbody class="">';
@@ -67,6 +68,7 @@ echo '<table id="keywords" class="table table-bordered table-sm-responsive table
 		<td class="installedTo">' . $row['srl_no'] . '</td>
 		<td class="prson">' . $row['prson'] . '</td>
 		<td class="date_time">' . $row['date_time'] . '</td>
+		<td class="installedTo">' . $row['installedTo'] . '</td>
 		</tr>';
 	}
 	echo '</tbody>

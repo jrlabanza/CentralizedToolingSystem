@@ -21,27 +21,26 @@ if(empty($fileName)){
     $fileName = '';
 }
             $srid = $_POST['srid'];
-            $lb_id = $_POST['lbid'];
+            $disk_no = $_POST['disk_no'];
             $family = $_POST['family'];
-            $tst_pf = $_POST['tstPf'];
-            $tstID = $_POST['tstID'];
-            $hdID = $_POST['hdID'];
+            $tester_name = $_POST['tester_name'];
+            $program = $_POST['program'];
+            $pkg_type = $_POST['pkg_type'];
             $status = $_POST['status'];
             $loc = $_POST['loc'];
-            $storage = $_POST['storage'];
             $line = $_POST['line'];
-            $vendor = $_POST['vendor'];
-            $track = $_POST['track'];
-            $borrower = $_POST['borrower'];
             $remarks = $_POST['remarks'];
+            $test_type = $_POST['test_type'];
+            $tstID = $_POST['tstID'];
+            $hdID = $_POST['hdID'];
             //$clerk = $_POST['clerk'];
             //$db = Db::getInstance();
 
-            $conn->query("UPDATE program set status='".$status."',tester_id='".$tstID."',handler_id='".$hdID."', loc='".$loc."', remarks='".$remarks."', last_update='".$lastUpdate."' WHERE serial_id = '".$srid."'");
+            $conn->query("UPDATE program set status='".$status."', loc='".$loc."', remarks='".$remarks."', last_update='".$lastUpdate."', handler_id = '".$hdID."' WHERE serial_id = '".$srid."'");
 
-            $conn->query("INSERT INTO program_history(serial_id,lb_id,family,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,borrower,clerk,sfile,remarks)
-            VALUES('".$srid."','".$lb_id."','".$family."','".$tst_pf."','".$status."','".$tstID."','".$hdID."','".$loc."','".$storage."','".$line."',
-              '".$vendor."','".$borrower."','".$_SESSION['userEmail']."','".$fileName."','".$remarks."')");
+            $conn->query("INSERT INTO program_history(serial_id,disc_no,pkg_type,fam_name,test_type,tester_name,program,status,loc,line,clerk,sfile,remarks,handler_id)
+            VALUES('".$srid."','".$disk_no."','".$pkg_type."','".$family."','".$test_type."','".$tester_name."','".$program."','".$status."''".$loc."','".$line."',
+              '".$_SESSION['userEmail']."','".$fileName."','".$remarks."', '".$hdID."')");
 
             //header('Location: ?controller=pages&action=trkLB');
             mysqli_close($conn);

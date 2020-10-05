@@ -501,7 +501,32 @@ switch($cat)
           echo "<th colspan='20' class='text-center bg-warning' scope=''>SEARCH RESULT: 0</th>";
         }
         break;
-        
+        case "CK":
+          $result = $conn->query('SELECT * FROM ck WHERE category LIKE "%'.$id.'%" OR handler_pf LIKE "%'.$id.'%" OR storage LIKE "%'.$id.'%" OR package_type LIKE "%'.$id.'%" OR serial_id LIKE "%'.$id.'%"');
+          $count=mysqli_num_rows($result);
+          // $cntr = 0;
+          if ($count > 0){
+            while ($row = $result->fetch_assoc()) {
+              echo "<tr data-change-kit='". $row['id'] ."'>             
+              <td class='srID'>". $row['serial_id'] ."</td>
+              <td class='hdPF'>". $row['handler_pf'] ."</td>
+              <td class='pkgType'>". $row['package_type'] ."</td>
+              <td class='cat'>". $row['category'] ."</td>
+              <td class='strg'>". $row['storage'] ."</td>
+              <td class='size'>". $row['size'] ."</td>
+              <td class='ckResult'>". $row['ckResult'] ."</td>
+              <td class='date'>". $row['date_time'] ."</td>
+              <td class='updated'>". $row['last_update'] ."</td>
+              <td class=''>". $row['remarks'] ."</td>
+              </tr>";
+            }
+            echo "<tr>
+              <th colspan='20' class='text-center bg-success' scope='row'>SEARCH RESULT: $count</th>
+            </tr>";
+          }else{
+            echo "<th colspan='20' class='text-center bg-warning' scope=''>SEARCH RESULT: 0</th>";
+          }
+          break;
     default:
         break;
 }

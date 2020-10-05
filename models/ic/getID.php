@@ -46,7 +46,7 @@ if($_POST['id']){
 
             <td class="ShotCnt">' . $row['shots'] . '</td>
             <td class="">' . $row['remarks'] . '</td>
-            <td class="line">' . $row['line'] . '</td>
+            <td class="line" hidden>' . $row['line'] . '</td>
             <td class="">' . $row['last_update'] . '</td>
         </tr>';
 	}

@@ -10,7 +10,7 @@ $perPage = new PerPage();
 if (empty($_SESSION['line'])){
 	$sql = "SELECT * from program WHERE isDeleted = 0 ORDER BY last_update DESC";
 }else{
-	$sql = "SELECT * FROM program WHERE isDeleted = 0  WHERE line = '$_SESSION[line]' ORDER BY last_update DESC";
+	$sql = "SELECT * FROM program WHERE isDeleted = 0  and line = '$_SESSION[line]' ORDER BY last_update DESC";
 }
 
 $paginationlink = "models/program/pagiResPG.php?page=";
@@ -48,21 +48,18 @@ if(!empty($perpageresult)) {
 $output .= '<table id="keywords" class="table table-bordered table-sm-responsive table-hover">
 	<thead id="thead" class="thead-light">
 		<tr>
-			<th scope="col" class="col-sm-0">IMAGE</th>
 			<th scope="col" class="col-sm-0">SERIAL ID</th>
-			<th scope="col" class="col-sm-0">LB ID</th>
-			<th scope="col" class="col-sm-0">DUT BOARD NAME</th>
-			<th scope="col" class="col-sm-0">N++</th>
-			<th scope="col" class="col-sm-0">TST PF</th>
+			<th scope="col" class="col-sm-0">DISC NO</th>
+			<th scope="col" class="col-sm-0">PACKAGE TYPE</th>
+			<th scope="col" class="col-sm-0">FAMILY NAME</th>
+			<th scope="col" class="col-sm-0">TEST TYPE</th>
+			<th scope="col" class="col-sm-0">TESTER NAME</th>
+			<th scope="col" class="col-sm-0">HANDLER NAME</th>
+			<th scope="col" class="col-sm-0">PROGRAM</th>
 			<th scope="col" class="col-sm-0">STATUS</th>
-			<th scope="col" class="col-sm-0">TST ID</th>
-			<th scope="col" class="col-sm-0">HD ID</th>
 			<th scope="col" class="col-sm-0">LOCATION</th>
 			<th scope="col" class="col-sm-0">STORAGE</th>
-			<th scope="col" class="col-sm-0">VENDOR</th>
 			<th scope="col" class="col">REMARKS</th>
-			<th scope="col" class="col">MAIN BOARD 1</th>
-			<th scope="col" class="col">MAIN BOARD 2</th>
 			<th scope="col" class="col-sm-0">LINE</th>
 			<th scope="col" class="col-sm-0">UPDATED</th>
 		</tr>
@@ -104,21 +101,18 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 
 			$output .= '
 					<tr '.$style.'>
-							<td class="image"><a href="uploads/program/'. $imageUpload  .'" target="_blank"><img class="img-responsive" src="uploads/program/'. $imageUpload .'" style="width:100%"></a> </td>
 							<td class="srID">' . $faq[$k]['serial_id'] . '</td>
-							<td class="lbID">' . $faq[$k]['lb_id'] . '</td>
-							<td class="fam">' . $faq[$k]['family'] . '</td>
-							<td class="nplus">' . $faq[$k]['n_plus'] . '</td>
-							<td class="tst">' . $faq[$k]['tst_pf'] . '</td>
+							<td class="disc_no">' . $faq[$k]['disc_no'] . '</td>
+							<td class="pkg_type">' . $faq[$k]['pkg_type'] . '</td>
+							<td class="fam_name">' . $faq[$k]['fam_name'] . '</td>
+							<td class="test_type">' . $faq[$k]['test_type'] . '</td>
+							<td class="tester_name">' . $faq[$k]['tester_name'] . '</td>
+							<td class="handler_id">' . $faq[$k]['handler_id'] . '</td>
+							<td class="program">'. $faq[$k]['program'] .'</td>
 							<td class="stats">' . $status . '</td>
-							<td class="tstID">' . $faq[$k]['tester_id'] . '</td>
-							<td class="hdID">' . $faq[$k]['handler_id'] . '</td>
 							<td class="loc">' . $faq[$k]['loc'] . '</td>
 							<td class="strg">' . $faq[$k]['storage'] . '</td>
-							<td class="ven">' . $faq[$k]['vendor'] . '</td>
 							<td class="">' . $faq[$k]['remarks'] . '</td>
-							<td class="">'. $faq[$k]['main_board_1'] .'</td>
-							<td class="">'. $faq[$k]['main_board_2'] .'</td>
 							<td class="line">' . $faq[$k]['line'] . '</td>
 							<td class="updated">' . $faq[$k]['last_update'] . '</td>
 						</tr>';

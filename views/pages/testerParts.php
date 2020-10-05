@@ -88,6 +88,7 @@
 								</div>
 								<div class="col-sm-4">
 									PART NAME:<input id="" name="dscrptn" type="text" class="form-control mb-2 getPartName" tabindex="-1" readonly/>
+									<input id="" name="cost" type="text" class="form-control mb-2 getCost" tabindex="-1" hidden/>
 									<!-- SERIAL NO:<input id="" name="srl_no" type="text" class="form-control mb-2 getSerialNumber" tabindex="-1" readonly/> -->
 									TESTER PLATFORM:<input id="" name="mchn_model" type="text" class="form-control mb-2 getTesterPlatform" tabindex="-1" readonly/>
 									REMARKS/SERIAL NUMBER:<input id="" name="remarks" type="text" class="form-control mb-2" tabindex="-1">

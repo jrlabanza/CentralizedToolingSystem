@@ -7,39 +7,27 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">UPDATE PROGRAM INFORMATION</h5>
+					<h5 class="modal-title" id="exampleModalLabel">UPDATE TEST STAND INFORMATION</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" tabindex="-1">
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-4">
-							<input id="gettd0" name="tblid" type="text" class="form-control mb-2" style="display: none;">
-							SERIAL ID:<input id="gettd1" name="srid" type="text" class="form-control mb-2" required>
-							PACKAGE TYPE:<input id="gettd3" name="package_type" type="text" class="form-control mb-2" required>
-							FAMILY:<input id="gettd4" name="family" type="text" class="form-control mb-2" required>
-						</div>
-						<div class="col-md-4">
-							DISC NO:<input id="gettd2" name="disc_no" type="text" class="form-control mb-2" required>
-							<!-- <label for="name">DUT REQ:<input id="getDutReq" name="dutReq" type="text" class="form-control mb-2" required> -->
-							TEST TYPE:<input id="gettd5" name="test_type" type="text" class="form-control mb-2" required>
-							PROGRAM:<input id="gettd7" name="program" type="text" class="form-control mb-2" required>
-						</div>
-						<div class="col-md-4">
-							LINE:<select id="gettd10" name="line" class="form-control mb-2" required>
-								<!-- <option value="LSI-ASSY">LSI-ASSY</option> -->
-								<option value="LSI-FT">LSI-FT</option>
-								<!-- <option value="QFN-ASSY">QFN-ASSY</option> -->
-								<option value="QFN-FT">QFN-FT</option>
-							</select>
-							TESTER NAME:<input id="gettd6" name="tester_name" type="text" class="form-control mb-2" required>
+				<div class="row">
+				<div class="col-sm-6">
+					<input id="gettd0" name="tblid" type="text" class="form-control mb-2 getID" style="display: none;">
+					SERIAL ID:<input id="gettd1" name="itm_nm" type="text" class="form-control mb-2 getSerialNumber" tabindex="-1">
+					TESTER PLATFORM:<input id="gettd3" name="prt_no" type="text" class="form-control mb-2 getTSTPF" tabindex="-1">
+					RACK:<input id="gettd5" name="vendor" type="text" class="form-control mb-2 getRack " tabindex="-1">
+					
+				</div>
+				<div class="col-sm-6">
+					FAMILY:<input id="gettd2" name="dscrptn" type="text" class="form-control mb-2 getFamily" tabindex="-1">
+					LINE::<input id="gettd4" name="srl_no" type="text" class="form-control mb-2 getLine" tabindex="-1">
+					
+				</div>
 
-						 </div>
-						 <div class="col-md-12">
-							REMARKS:<textarea id="gettd9" name="remarks" class="form-control mb-2" rows="2"></textarea>
-						 </div>
-					</div>
+			</div>
 					<div class="row">
 						<div class="col-md-12">
 							<br>
@@ -124,5 +112,5 @@ function getresult(url) {
 	</div>
 </div>
 <script>
-getresult("models/editItems/editResPG.php");
+getresult("models/editItems/editResTT.php");
 </script>

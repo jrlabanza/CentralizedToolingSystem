@@ -44,14 +44,15 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 		<th scope="col" class="col-sm-0">QUANTITY</th>
 		<th scope="col" class="col-sm-0">PART NAME</th>
 		<th scope="col" class="col-sm-0">PART NUMBER</th>
+		<th scope="col" class="col-sm-0">COST($)</th>
 		<th scope="col" class="col-sm-0">SERIAL NUMBER</th>
 		<th scope="col" class="col-sm-0">VENDOR</th>
 		<th scope="col" class="col-sm-0">TESTER PLATFORM</th>
 		<th scope="col" class="col-sm-0">STATUS</th>
 		<th scope="col" class="col-sm-0">LOCATION</th>
-		<th scope="col" class="col-sm-0">COST($)</th>
 		<th scope="col" class="col-sm-0">PERSONEL</th>
 		<th scope="col" class="col-sm-0">DATE /TIME</th>
+		<th scope="col" class="col-sm-0">INSTALLED TO</th>
 		</tr>
 	</thead>
 	<tbody class="">';
@@ -64,14 +65,15 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 					<td class="quantity">' . $faq[$k]['quantity'] . '</td>
 					<td class="dscrptn">' . $faq[$k]['dscrptn'] . '</td>
 					<td class="prt_no">' . $faq[$k]['prt_no'] . '</td>
+					<td class="installedTo">' . $faq[$k]['srl_no'] . '</td>
 					<td class="srl_no">' . $faq[$k]['remarks'] . '</td>
 					<td class="vendor">' . $faq[$k]['vendor'] . '</td>
 					<td class="mchn_model">' . $faq[$k]['mchn_model'] . '</td>
 					<td class="status">' . $faq[$k]['status'] . '</td>
 					<td class="lction">' . $faq[$k]['lction'] . '</td>
-					<td class="installedTo">' . $faq[$k]['srl_no'] . '</td>
 					<td class="prson">' . $faq[$k]['prson'] . '</td>
 					<td class="date_time">' . $faq[$k]['date_time'] . '</td>
+					<td class="installedTo">' . $faq[$k]['installedTo'] . '</td>
 					</tr>';
 			// $output .= '<div class="question"><input type="hidden" id="rowcount" name="rowcount" value="' . $_GET["rowcount"] . '" />' . $faq[$k]["lb_id"] . '</div>';
 			// $output .= '<div class="answer">' . $faq[$k]["family"] . '</div>';

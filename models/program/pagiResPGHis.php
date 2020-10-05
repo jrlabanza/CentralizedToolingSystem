@@ -40,21 +40,21 @@ if(!empty($perpageresult)) {
 $output .= '<table id="keywords" class="table table-bordered table-sm-responsive table-hover">
 	<thead id="thead" class="thead-light">
 		<tr>
-			<th scope="col" class="col-sm-0">DATE / TIME</th>
+			
 			<th scope="col" class="col-sm-0">SERIAL ID</th>
-			<th scope="col" class="col-sm-0">LB ID</th>
-			<th scope="col" class="col-sm-0">DUT BOARD NAME</th>
-			<th scope="col" class="col-sm-0">TST PF</th>
+			<th scope="col" class="col-sm-0">DISC NO</th>
+			<th scope="col" class="col-sm-0">PACKAGE TYPE</th>
+			<th scope="col" class="col-sm-0">FAMILY NAME</th>
+			<th scope="col" class="col-sm-0">TEST TYPE</th>
+			<th scope="col" class="col-sm-0">TESTER NAME</th>
+			<th scope="col" class="col-sm-0">HANDLER NAME</th>
+			<th scope="col" class="col-sm-0">PROGRAM</th>
 			<th scope="col" class="col-sm-0">STATUS</th>
-			<th scope="col" class="col-sm-0">TST ID</th>
-			<th scope="col" class="col-sm-0">HD ID</th>
 			<th scope="col" class="col-sm-0">LOCATION</th>
 			<th scope="col" class="col-sm-0">STORAGE</th>
-			<th scope="col" class="col-sm-0">VENDOR</th>
-			<th scope="col" class="col-sm-0">REMARKS</th>
+			<th scope="col" class="col">REMARKS</th>
 			<th scope="col" class="col-sm-0">LINE</th>
-			<th scope="col" class="col-sm-0">CLIENT</th>
-			<th scope="col" class="col-sm-0">HW PERSONNEL</th>
+			<th scope="col" class="col-sm-0">UPDATED</th>
 		</tr>
 	</thead>
 	<tbody class="">';
@@ -63,21 +63,21 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 		foreach($faq as $k=>$v) {
 			$output .= '
 					<tr>
-						<td class="lbID" scope="row">' . $faq[$k]['date_time'] . '</td>
-						<td class="srID" scope="row">' . $faq[$k]['serial_id'] . '</td>
-						<td class="lbID" scope="row">' . $faq[$k]['lb_id'] . '</td>
-						<td class="fam">' . $faq[$k]['family'] . '</td>
-						<td class="tst">' . $faq[$k]['tst_pf'] . '</td>
-						<td class="stats">' . $faq[$k]['status'] . '</td>
-						<td class="tstID">' . $faq[$k]['tester_id'] . '</td>
+					
+						<td class="srID">' . $faq[$k]['serial_id'] . '</td>
+						<td class="lbID">' . $faq[$k]['disc_no'] . '</td>
+						<td class="fam">' . $faq[$k]['pkg_type'] . '</td>
+						<td class="tst">' . $faq[$k]['fam_name'] . '</td>
+						<td class="tstID">' . $faq[$k]['test_type'] . '</td>
+						<td class="hdID">' . $faq[$k]['tester_name'] . '</td>
 						<td class="hdID">' . $faq[$k]['handler_id'] . '</td>
+						<td class="">'. $faq[$k]['program'] .'</td>
+						<td class="stats">' . $status . '</td>
 						<td class="loc">' . $faq[$k]['loc'] . '</td>
 						<td class="strg">' . $faq[$k]['storage'] . '</td>
-						<td class="ven">' . $faq[$k]['vendor'] . '</td>
-						<td class="line">' . $faq[$k]['remarks'] . '</td>
+						<td class="">' . $faq[$k]['remarks'] . '</td>
 						<td class="line">' . $faq[$k]['line'] . '</td>
-						<td class="updated">' . $faq[$k]['borrower'] . '</td>
-						<td class="updated">' . $faq[$k]['clerk'] . '</td>
+						<td class="updated">' . $faq[$k]['last_update'] . '</td>
 					</tr>';
 			// $output .= '<div class="question"><input type="hidden" id="rowcount" name="rowcount" value="' . $_GET["rowcount"] . '" />' . $faq[$k]["lb_id"] . '</div>';
 			// $output .= '<div class="answer">' . $faq[$k]["family"] . '</div>';

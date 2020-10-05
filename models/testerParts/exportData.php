@@ -36,7 +36,7 @@ $sep = "\t"; //tabbed character
 //for ($i = 0; $i < mysqli_num_fields($result); $i++) {
 //echo mysqli_field_name($result,$i) . "\t";
 //}
-echo "ITEM NAME".$sep."DESCRIPTION".$sep."VENDOR".$sep."MACHINE MODEL".$sep."PART NUMBER".$sep."COST($)".$sep."STATUS".$sep."LOCATION".$sep."REMARKS".$sep."PERSON".$sep."DATETIME".$sep."QUANTITY".$sep."INSTALLED TO";
+echo "ITEM NAME".$sep."DESCRIPTION".$sep."VENDOR".$sep."MACHINE MODEL".$sep."PART NUMBER".$sep."COST($)".$sep."STATUS".$sep."LOCATION".$sep."SERIAL NUMBER".$sep."PERSON".$sep."DATETIME".$sep."QUANTITY".$sep."INSTALLED TO";
 print("\n");
 //end of printing column names
 //start while loop to get data

@@ -74,53 +74,25 @@ if($_POST['id']){
 											<br>
 										<div class="row">
 											<div class="col-md-6">
-												MAIN BOARD 1:<input id="getMB1" name="mb1" type="text" class="form-control mb-2 pizza-read-only"  tabindex="-1">
-												SERIAL ID:<input id="getSerID" name="srid" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['serial_id'] ?>">
-												LOADBOARD ID:<input id="getLBID" name="lbid" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['lb_id'] ?>">
-												DUT BOARD NAME:<input id="getFam" name="family" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['family'] ?>">
-												VENDOR:<input id="getVen" name="vendor" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['vendor'] ?>">
-												TESTER PF:<input id="getTstPF" name="tstPf" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['tst_pf'] ?>">
-												LINE:<input id="getLine" name="line" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['line'] ?>">
-												RACK:<input id="getStrg" name="storage" type="text" class="form-control mb-2" readonly="" tabindex="-1" value="<?php echo $row['storage'] ?>">
+											SERIAL ID:<input id="getSrID" name="srid" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+											DISK NO:<input id="getDiskNo" name="disk_no" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+											FAMILY:<input id="getFam" name="family" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+											TESTER NAME:<input id="getTesterName" name="tester_name" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+											PROGRAM:<input id="getProgram" name="program" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+											LINE:<input id="getLine" name="line" type="text" class="form-control mb-2" readonly="" tabindex="-1">
 											</div>
 											<div class="col-md-6">
-												MAIN BOARD 2:<input id="getMB2" name="mb2" type="text" class="form-control mb-2 pizza-read-only"  tabindex="-1">
-
-												CLIENT :<input list="users" name="borrower" type="text" class="form-control mb-2" required="">
-												<datalist id="users">
-													<?php include("../trackUsers.php"); ?>
-												</datalist>
-												TESTER ID:<select id="getTstID" name="tstID" type="text" class="form-control mb-2" required="">
-
-<?php
-												echo '<option value="N/A">N/A</option>';
-												$result = $conn->query('SELECT tester_id FROM testers WHERE tst_pf="'.$row['tst_pf'].'"');
-												while ($row2 = $result->fetch_assoc()) {
-													echo '<option value="'.$row2['tester_id'].'">'.$row2['tester_id'].'</option>';
-												}
-?>
-												</select>
-
-<?php
-												// $result = $conn->query('SELECT handler_id FROM handlers');
-												// while ($row3 = $result->fetch_assoc()) {
-												// 	echo '<option value="'.$row3['handler_id'].'">'.$row3['handler_id'].'</option>';
-                                                // }
-?>
-												HANDLER ID:<input list="handlerList" id="getHdID" name="hdID" type="text" class="form-control mb-2" required="">
-                                                <datalist id="handlerList"></datalist>
-												STATUS:<select id="getStats" name="status" class="form-control mb-2" required="" disabled>
-												<?php
-													echo '<option value="'.$row['status'].'" selected>'.$row['status'].'</option>';
-												?>
-												</select>
-												LOCATION:<select id="getLoc" name="loc" class="form-control mb-2" required="" disabled>
-												<?php
-													echo '<option value="'.$row['loc'].'" selected>'.$row['loc'].'</option>';
-												?>
-												</select>
-												REMARKS:<textarea id="remarks" name="remarks" class="form-control mb-2" rows="3"></textarea>
-												
+											CLIENT :<input list="users" name="borrower" type="text" class="form-control mb-2" required="">
+											<datalist id="users">
+												<?php include("./models/users.php"); ?>
+											</datalist>
+											PACKAGE TYPE:<input id="getPkgType" name="pkg_type" type="text" class="form-control mb-2" required=""/>
+											TEST TYPE:<input id="getTestType" name="test_type" type="text" class="form-control mb-2" required=""/>
+											STATUS:<select id="getStats" name="status" class="form-control mb-2" required="" disabled>
+											</select>
+											LOCATION:<select id="getLoc" name="loc" class="form-control mb-2" required="">
+											</select>
+											REMARKS:<textarea id="remarks" name="remarks" class="form-control mb-2" rows="3"></textarea>
 										</div>
 										</div>
 										<div class="row">

@@ -13,13 +13,13 @@ if (!empty($_POST['to'])) {
 }
 
 if (!empty($_POST['serialID']) && !empty($_POST['from']) && !empty($_POST['to'])) {
-	$result = $conn->query('SELECT serial_id,disc_no,pkg_type,fam_name,test_type,tester_name,program,status,loc,storage,remarks,line,date_time,last_update,clerk,handler_id FROM program_history WHERE serial_id LIKE "%'.$_POST['serialID'].'%" AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY id DESC');
+	$result = $conn->query('SELECT barcode,bib_id,serial_id,family,status,loc,storage,line,date_time,last_update,clerk,remarks FROM bib_history WHERE bib_id LIKE "%'.$_POST['serialID'].'%" AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY id DESC');
 }elseif (!empty($_POST['from']) && !empty($_POST['to'])) {
-	$result = $conn->query('SELECT serial_id,disc_no,pkg_type,fam_name,test_type,tester_name,program,status,loc,storage,remarks,line,date_time,last_update,clerk,handler_id FROM program_history WHERE date_time between "'.$from.' 00:00:00" AND "'.$to.' 23:59:59" ORDER BY id DESC');
+	$result = $conn->query('SELECT barcode,bib_id,serial_id,family,status,loc,storage,line,date_time,last_update,clerk,remarks FROM bib_history WHERE date_time between "'.$from.' 00:00:00" AND "'.$to.' 23:59:59" ORDER BY id DESC');
 }elseif (!empty($_POST['from'])){
-	$result = $conn->query('SELECT serial_id,disc_no,pkg_type,fam_name,test_type,tester_name,program,status,loc,storage,remarks,line,date_time,last_update,clerk,handler_id FROM program_history WHERE date_time >= "'.$from.'" ORDER BY id DESC');
+	$result = $conn->query('SELECT barcode,bib_id,serial_id,family,status,loc,storage,line,date_time,last_update,clerk,remarks FROM bib_history WHERE date_time >= "'.$from.'" ORDER BY id DESC');
 }else {
-	$result = $conn->query('SELECT serial_id,disc_no,pkg_type,fam_name,test_type,tester_name,program,status,loc,storage,remarks,line,date_time,last_update,clerk,handler_id FROM program_history WHERE serial_id LIKE "%'.$_POST['serialID'].'%" ORDER BY id DESC');
+	$result = $conn->query('SELECT barcode,bib_id,serial_id,family,status,loc,storage,line,date_time,last_update,clerk,remarks FROM bib_history WHERE bib_id LIKE "%'.$_POST['serialID'].'%" ORDER BY id DESC');
 }
 
 //$result = $conn->query('SELECT lb_id,family FROM lb_history ORDER BY id DESC');
@@ -36,7 +36,7 @@ $sep = "\t"; //tabbed character
 //for ($i = 0; $i < mysqli_num_fields($result); $i++) {
 //echo mysqli_field_name($result,$i) . "\t";
 //}
-echo "SERIAL ID".$sep."DISC NO".$sep."PACKAGE TYPE".$sep."FAMILY NAME".$sep."TEST TYPE".$sep."TESTER NAME".$sep."PROGRAM".$sep."STATUS".$sep."LOCATION".$sep."STORAGE".$sep."REMARKS".$sep."LINE".$sep."DATE TIME".$sep."LAST UPDATE".$sep."CLERK".$sep."HANDLER ID";
+echo "BARCODE".$sep."BIB ID".$sep."SERIAL ID".$sep."FAMILY".$sep."STATUS".$sep."LOCATION".$sep."STORAGE".$sep."LINE".$sep."DATE / TIME".$sep."LAST UPDATE".$sep."CLERK".$sep."REMARKS";
 print("\n");
 //end of printing column names
 //start while loop to get data
@@ -45,9 +45,9 @@ print("\n");
         $schema_insert = "";
         for($j=0; $j<mysqli_num_fields($result);$j++)
         {
-            if ($j == 14){
-                $url = "http://phsm01ws014/cents/uploads/";
-                //$url = "http://127.0.0.1/cents/uploads/";
+            if ($j == 22){
+                //$url = "http://phsm01ws012/cents/uploads/";
+                $url = "http://127.0.0.1/cents/uploads/";
             }else{
                 $url = "";
             }

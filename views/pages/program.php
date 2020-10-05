@@ -59,12 +59,11 @@
 								<div class="col-sm-6">
 									
 									SERIAL ID:<input id="getSrID" name="srid" type="text" class="form-control mb-2" readonly="" tabindex="-1">
-									LOADBOARD ID:<input id="getLBID" name="lbid" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+									DISK NO:<input id="getDiskNo" name="disk_no" type="text" class="form-control mb-2" readonly="" tabindex="-1">
 									FAMILY:<input id="getFam" name="family" type="text" class="form-control mb-2" readonly="" tabindex="-1">
-									VENDOR:<input id="getVen" name="vendor" type="text" class="form-control mb-2" readonly="" tabindex="-1">
-									TESTER PF:<input id="getTstPF" name="tstPf" type="text" class="form-control mb-2" readonly="" tabindex="-1">
+									<!-- TESTER NAME:<input id="getTesterName" name="tester_name" type="text" class="form-control mb-2" readonly="" tabindex="-1"> -->
+									PROGRAM:<input id="getProgram" name="program" type="text" class="form-control mb-2" readonly="" tabindex="-1">
 									LINE:<input id="getLine" name="line" type="text" class="form-control mb-2" readonly="" tabindex="-1">
-									RACK:<input id="getStrg" name="storage" type="text" class="form-control mb-2" readonly="" tabindex="-1">
 								</div>
 								<div class="col-sm-6">
 
@@ -72,9 +71,10 @@
 									<datalist id="users">
 										<?php include("./models/users.php"); ?>
 									</datalist>
-									TESTER ID:<select id="getTstID" name="tstID" type="text" class="form-control mb-2" required=""></select>
+									TESTER ID:<select id="getTstID" name="tester_name" type="text" class="form-control mb-2" required=""></select>
 									HANDLER ID:<input list="handlerList" id="getHdID" name="hdID" type="text" class="form-control mb-2" required="">
-									<datalist id="handlerList"></datalist>
+									PACKAGE TYPE:<input id="getPkgType" name="pkg_type" type="text" class="form-control mb-2" required=""/>
+									TEST TYPE:<input id="getTestType" name="test_type" type="text" class="form-control mb-2" required=""/>
 									STATUS:<select id="getStats" name="status" class="form-control mb-2" required="" disabled>
 									</select>
 									LOCATION:<select id="getLoc" name="loc" class="form-control mb-2" required="">

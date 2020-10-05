@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
     <head>
-		<!--Programmer: Victor Nacino-->
+		<!--Programmer: Victor Nacino/Jorelle Labanza-->
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge;">
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">

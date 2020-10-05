@@ -6,7 +6,7 @@ $datetime = date("Y-m-d H:i:s");
 //
 if($_POST['id']){
 	$id=$_POST['id'];
-	$result = $conn->query('SELECT * FROM program WHERE serial_id LIKE "%'.$id.'%" OR family LIKE "%'.$id.'%" OR lb_id LIKE "%'.$id.'%" OR status LIKE "%'.$id.'%" OR tst_pf LIKE "%'.$id.'%" OR tester_id LIKE "%'.$id.'%" OR loc LIKE "%'.$id.'%" OR handler_id LIKE "%'.$id.'%" OR line LIKE "%'.$id.'%"');
+	$result = $conn->query('SELECT * FROM program WHERE serial_id LIKE "%'.$id.'%" OR pkg_type LIKE "%'.$id.'%" OR fam_name LIKE "%'.$id.'%" OR test_type LIKE "%'.$id.'%" OR tester_name LIKE "%'.$id.'%" OR program LIKE "%'.$id.'%" OR status LIKE "%'.$id.'%" OR loc LIKE "%'.$id.'%" OR storage LIKE "%'.$id.'%" OR line LIKE "%'.$id.'%"');
 	while ($row = $result->fetch_assoc()) {
 
     $status = $row['status'];
@@ -43,19 +43,17 @@ if($_POST['id']){
 			echo "<tr ".$style.">
 			<td class='image'><a href='uploads/program/". $imageUpload  ." target='_blank'><img class='img-responsive' src='uploads/program/". $imageUpload ." style='width:100%'></a> </td>
 			<td class='srID'>" . $row['serial_id'] . "</td>
-			<td class='lbID'>" . $row['lb_id'] . "</td>
-			<td class='fam'>" . $row['family'] . "</td>
-			<td class='nplus'>" . $row['n_plus'] . "</td>
-			<td class='tst'>" . $row['tst_pf'] . "</td>
+			<td class='disc_no'>" . $row['disc_no'] . "</td>
+			<td class='pkg_type'>" . $row['pkg_type'] . "</td>
+			<td class='fam_name'>" . $row['fam_name'] . "</td>
+			<td class='test_type'>" . $row['test_type'] . "</td>
+			<td class='tester_name'>" . $row['tester_name'] . "</td>
+			<td class='handler_id'>" . $row['handler_id'] . "</td>
+			<td class='program'>". $row['program'] ."</td>
 			<td class='stats'>" . $status . "</td>
-			<td class='tstID'>" . $row['tester_id'] . "</td>
-			<td class='hdID'>" . $row['handler_id'] . "</td>
 			<td class='loc'>" . $row['loc'] . "</td>
 			<td class='strg'>" . $row['storage'] . "</td>
-			<td class='ven'>" . $row['vendor'] . "</td>
 			<td class=''>" . $row['remarks'] . "</td>
-			<td class=''>". $row['main_board_1'] ."</td>
-			<td class=''>". $row['main_board_2'] ."</td>
 			<td class='line'>" . $row['line'] . "</td>
 			<td class='updated'>" . $row['last_update'] . "</td>
 			</tr>";

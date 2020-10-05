@@ -46,16 +46,14 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 	<thead id="thead" class="thead-light">
 		<tr>
 			<th scope="col" class="col-sm-0">SERIAL ID</th>
-			<th scope="col" class="col-sm-0">LB ID</th>
-			<th scope="col" class="col-sm-0">FAMILY</th>
-			<th scope="col" class="col-sm-0">N++</th>
-			<th scope="col" class="col-sm-0">TST PF</th>
+			<th scope="col" class="col-sm-0">DISC NO</th>
+			<th scope="col" class="col-sm-0">PACKAGE TYPE</th>
+			<th scope="col" class="col-sm-0">FAMILY NAME</th>
+			<th scope="col" class="col-sm-0">TEST TYPE</th>
+			<th scope="col" class="col-sm-0">TESTER NAME</th>
+			<th scope="col" class="col-sm-0">PROGRAM</th>
 			<th scope="col" class="col-sm-0">STATUS</th>
-			<th scope="col" class="col-sm-0">TST ID</th>
-			<th scope="col" class="col-sm-0">HD ID</th>
 			<th scope="col" class="col-sm-0">LOCATION</th>
-			<th scope="col" class="col-sm-0">STORAGE</th>
-			<th scope="col" class="col-sm-0">VENDOR</th>
 			<th scope="col" class="col-sm-0">LINE</th>
 			<th scope="col" class="col-sm-0">REMARKS</th>
 			<th scope="col" class="col-sm-0">CUSTODIAN</th>
@@ -70,17 +68,15 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 					<tr style="cursor: pointer;">
 							<td class="td0" scope="row" style="display: none;">' . $faq[$k]['id'] . '</td>
 							<td class="td1">' . $faq[$k]['serial_id'] . '</td>
-							<td class="td2">' . $faq[$k]['lb_id'] . '</td>
-							<td class="td3">' . $faq[$k]['family'] . '</td>
-							<td class="td6">' . $faq[$k]['n_plus'] . '</td>
-							<td class="td5">' . $faq[$k]['tst_pf'] . '</td>
+							<td class="td2">' . $faq[$k]['disc_no'] . '</td>
+							<td class="td3">' . $faq[$k]['pkg_type'] . '</td>
+							<td class="td4">' . $faq[$k]['fam_name'] . '</td>
+							<td class="td5">' . $faq[$k]['test_type'] . '</td>
+							<td class="td6">' . $faq[$k]['tester_name'] . '</td>
+							<td class="td7">' . $faq[$k]['program'] . '</td>
 							<td class="">' . $faq[$k]['status'] . '</td>
-							<td class="">' . $faq[$k]['tester_id'] . '</td>
-							<td class="">' . $faq[$k]['handler_id'] . '</td>
 							<td class="">' . $faq[$k]['loc'] . '</td>
-							<td class="td8">' . $faq[$k]['storage'] . '</td>
-							<td class="td4">' . $faq[$k]['vendor'] . '</td>
-							<td class="td7">' . $faq[$k]['line'] . '</td>
+							<td class="td10">' . $faq[$k]['line'] . '</td>
 							<td class="td9">' . $faq[$k]['remarks'] . '</td>
 							<td class="">' . $faq[$k]['clerk'] . '</td>
 							<td class="">' . $faq[$k]['last_update'] . '</td>					

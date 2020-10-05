@@ -586,7 +586,7 @@ switch ($cat)
 		}
 
 		if ($checkID == $td0 && $checkSID == $td1){
-			$update = $db->prepare("UPDATE program set serial_id='".$td1."',lb_id='".$td2."',family='".$td3."',vendor='".$td4."',tst_pf='".$td5."',n_plus='".$td6."',line='".$td7."',storage='".$td8."',remarks='".$td9."',clerk='".$_SESSION['userEmail']."' WHERE id='".$td0."'");
+			$update = $db->prepare("UPDATE program set serial_id='".$td1."',disc_no='".$td2."',pkg_type='".$td3."',fam_name='".$td4."',test_type='".$td5."',tester_name='".$td6."',program='".$td7."',remarks='".$td9."',clerk='".$_SESSION['userEmail']."',line='".$td10."' WHERE id='".$td0."'");
 	
 			if ($update->execute()) {
 				echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Record updated <strong>successfully</strong></b></div>';
@@ -597,7 +597,7 @@ switch ($cat)
 			if ($count >= 1) {
 				echo '<div class="alert alert-danger" role="alert" id="message" for="name"><b>Serial ID already exist!</b></div>';
 			}else{
-				$update = $db->prepare("UPDATE program set serial_id='".$td1."',lb_id='".$td2."',family='".$td3."',vendor='".$td4."',tst_pf='".$td5."',n_plus='".$td6."',line='".$td7."',storage='".$td8."',remarks='".$td9."',clerk='".$_SESSION['userEmail']."' WHERE id='".$td0."'");
+				$update = $db->prepare("UPDATE program set serial_id='".$td1."',disc_no='".$td2."',pkg_type='".$td3."',fam_name='".$td4."',test_type='".$td5."',tester_name='".$td6."',program='".$td7."',remarks='".$td9."',clerk='".$_SESSION['userEmail']."',line='".$td10."' WHERE id='".$td0."'");
 		
 				if ($update->execute()) {
 					echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Record updated <strong>successfully</strong></b></div>';
@@ -698,6 +698,36 @@ switch ($cat)
 			}else{
 				$update = $db->prepare("UPDATE spanker set nozzle_partno='".$td1."',box_no='".$td2."',package='".$td3."',machine_model='".$td4."',max_shots='".$td5."',remarks='".$td6."',altrntv_nozzle='".$td7."',line='".$td8."' WHERE id='".$td0."'");
 		
+				if ($update->execute()) {
+					echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Record updated <strong>successfully</strong></b></div>';
+				} else {
+					echo "Error updating record: " . mysqli_error($conn);
+				}
+			}
+		}
+		break;
+	case "TT":
+		$query = $db->prepare("SELECT id,serial_id From mc WHERE serial_id = '$td1'");
+		$query->execute();
+		$count = $query->rowCount();
+		while ($row = $query->fetch(PDO::FETCH_ASSOC))
+		{
+			$checkID = $row['id'];
+			$checkSID = $row['serial_id'];
+		}
+
+		if ($checkID == $td0 && $checkSID == $td1){
+			$update = $db->prepare("UPDATE test_stand set serial_id='".$td1."',family='".$td2."',tst_pf='".$td3."',rack='".$td5."',line='".$td4."' WHERE id='".$td0."'");
+			if ($update->execute()) {
+				echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Record updated <strong>successfully</strong></b></div>';
+			} else {
+				echo "Error updating record: " . mysqli_error($conn);
+			}
+		}else{
+			if ($count >= 1) {
+				echo '<div class="alert alert-danger" role="alert" id="message" for="name"><b>Serial ID already exist!</b></div>';
+			}else{
+				$update = $db->prepare("UPDATE test_stand set serial_id='".$td1."',family='".$td2."',tst_pf='".$td3."',rack='".$td5."',line='".$td4."' WHERE id='".$td0."'");
 				if ($update->execute()) {
 					echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Record updated <strong>successfully</strong></b></div>';
 				} else {

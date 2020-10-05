@@ -19,18 +19,16 @@ if($_POST['id']){
 			else{
 				echo "<tr ".$style." data-tester-parts='$row[id]' data-current-quantity='$row[quantity]'>
 				<td class='itm_nm'>$row[itm_nm]</td>
-				<td class='quantity'>$row[quantity]</td>
 				<td class='dscrptn'>$row[dscrptn]</td>
 				<td class='prt_no'>$row[prt_no]</td>
+				<td class='quantity'>$row[quantity]</td>
 				<td class='installedTo'>$row[srl_no]</td>
-
-				<td class='srl_no'>$row[srl_no]</td>
+				<td class='srl_no' hidden>$row[srl_no]</td>
 				<td class='vendor'>$row[vendor]</td>
 				<td class='mchn_model'>$row[mchn_model]</td>
 				<td class='lction'>$row[lction]</td>
 				<td class='status'>$row[status]</td>
-
-				<td class='remarks'>$row[remarks]</td>
+				<td class='remarks' hidden>$row[remarks]</td>
 				<td class='prson'>$row[prson]</td>
 				<td class='date_time'>$row[date_time]</td>
 		  </tr>";

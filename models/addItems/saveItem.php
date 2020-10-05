@@ -394,15 +394,15 @@ switch ($cat)
             echo '<div class="alert alert-warning" role="alert" id="message" for="name"><b>Incomplete fill up</b></div>';
         }else{
             
-            $row = $db->prepare("SELECT * From program WHERE serial_ID = '$td1'");
+            $row = $db->prepare("SELECT * From program WHERE serial_id = '$td1'");
             $row->execute();
             $count = $row->rowCount();
 
             if ($count > 0) {
                 echo '<div class="alert alert-danger" role="alert" id="message" for="name"><b>Socket ID already exist!</b></div>';
             }else{
-                $db->query("INSERT INTO program(serial_ID,lb_id,family,tst_pf,storage,vendor,line,n_plus,remarks,clerk,loc,status)
-                VALUES('".$td1."','".$td2."','".$td3."','".$td4."','".$td5."','".$td6."','".$td7."','".$td8."','".$td9."','".$_SESSION['userEmail']."','HARDWARE','IN-FOR QUAL')");
+                $db->query("INSERT INTO program(serial_ID,disc_no,pkg_type,fam_name,test_type,tester_name,program,clerk)
+                VALUES('".$td1."','".$td4."','".$td2."','".$td3."','".$td5."','".$td8."','".$td6."','".$_SESSION['userEmail']."')");
 
                 echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Item added successfully!</b></div>';
             }    
@@ -461,7 +461,26 @@ switch ($cat)
                 echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Item added successfully!</b></div>';
             }    
         }
-        break;          
+        break;
+    case "TT":
+        if (empty($td1) || empty($td2) || empty($td3) || empty($td4) || empty($td5) || empty($td6)){
+            echo '<div class="alert alert-warning" role="alert" id="message" for="name"><b>Incomplete fill up</b></div>';
+        }else{
+            
+            $row = $db->prepare("SELECT * From test_stand WHERE serial_id = '$td1'");
+            $row->execute();
+            $count = $row->rowCount();
+
+            if ($count > 0) {
+                echo '<div class="alert alert-danger" role="alert" id="message" for="name"><b>Socket ID already exist!</b></div>';
+            }else{
+                $db->query("INSERT INTO test_stand(serial_id,family,tst_pf,line,rack,remarks,clerk)
+                VALUES('".$td1."','".$td2."','".$td3."','".$td4."','".$td5."','".$td6."','".$_SESSION['userEmail']."')");
+
+                echo '<div class="alert alert-success" role="alert" id="message" for="name"><b>Item added successfully!</b></div>';
+            }    
+        }
+        break;              
 	default:
 		break;
 }
