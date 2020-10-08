@@ -179,7 +179,7 @@ function changePagination(option) {
 		<h2>CHIPMOUNT NOZZLE SECTION</h2>
 		<div class="form-group">
 		<div class="row">
-		<div class="col-md-4"><label for="name">SEARCH</label><input type="text" class="form-control" id="nozzleID">
+		<div class="col-md-4"><label for="name">SEARCH</label><input type="text" class="form-control" id="chipmountNozzleID">
 
 		</div>
 		<!-- <div class="col-md-3">

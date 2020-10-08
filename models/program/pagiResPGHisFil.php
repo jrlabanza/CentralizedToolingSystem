@@ -15,13 +15,13 @@ if (!empty($filter[2])) {
 }
 
 if (!empty($filter[0]) && !empty($filter[1]) && !empty($filter[2])) {
-	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE serial_id LIKE "%'.$filter[0].'%" OR lb_id LIKE "%'.$filter[0].'%" AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY date_time DESC');
+	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE (serial_id LIKE "%'.$filter[0].'%" OR lb_id LIKE "%'.$filter[0].'%") AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY date_time DESC');
 }elseif (!empty($filter[1]) && !empty($filter[2])) {
 	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE date_time between "'.$from.' 00:00:00" AND "'.$to.' 23:59:59" ORDER BY date_time DESC');
 }elseif (!empty($filter[1])){
 	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE date_time >= "'.$from.'" ORDER BY date_time DESC');
 }else {
-	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE lb_id LIKE "%'.$filter[0].'%" ORDER BY date_time DESC');
+	$result = $conn->query('SELECT serial_id,lb_id,family,tst_pf,status,loc,storage,line,vendor,tester_id,handler_id,borrower,clerk,date_time,sFile,remarks FROM pg_history WHERE (lb_id LIKE "%'.$filter[0].'%") ORDER BY date_time DESC');
 }
 
 

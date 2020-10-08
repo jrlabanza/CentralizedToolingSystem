@@ -15,13 +15,13 @@ if (!empty($filter[2])) {
 }
 
 if (!empty($filter[0]) && !empty($filter[1]) && !empty($filter[2])) {
-	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE socket_id WHERE lb_id LIKE "%'.$filter[0].'%" OR handler_id LIKE "%'.$filter[0].'%" OR package_type LIKE "%'.$filter[0].'%" AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY date_time DESC');
+	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE (socket_id LIKE "%'.$filter[0].'%" lb_id LIKE "%'.$filter[0].'%" OR handler_id LIKE "%'.$filter[0].'%" OR package_type LIKE "%'.$filter[0].'%") AND date_time between "'.$from.'" AND "'.$to.'" ORDER BY date_time DESC');
 }elseif (!empty($filter[1]) && !empty($filter[2])) {
 	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE date_time between "'.$from.' 00:00:00" AND "'.$to.' 23:59:59" ORDER BY date_time DESC');
 }elseif (!empty($filter[1])){
 	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE date_time >= "'.$from.'" ORDER BY date_time DESC');
 }else {
-	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE socket_id LIKE "%'.$filter[0].'%" OR handler_id LIKE "%'.$filter[0].'%" OR package_type LIKE "%'.$filter[0].'%" ORDER BY date_time DESC');
+	$result = $conn->query('SELECT socket_id,family,package_type,part_no,tst_pf,status,tester_id,handler_id,loc,storage,line,vendor,pin_type,pin_count,shotcount,max_shotcount,site,gs_code,remarks,n_plus,client,clerk,sFile,date_time FROM socket_history WHERE (socket_id LIKE "%'.$filter[0].'%" OR handler_id LIKE "%'.$filter[0].'%" OR package_type LIKE "%'.$filter[0].'%") ORDER BY date_time DESC');
 }
 
 

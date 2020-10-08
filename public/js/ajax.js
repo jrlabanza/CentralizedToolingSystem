@@ -974,6 +974,33 @@ if(key == 13)  // the enter key code
 	}
 });
 
+$('#chipmountNozzleID').keypress(function (e) {
+	var key = e.which;
+	if(key == 13)  // the enter key code
+		{
+	
+			var id=$(this).val();
+			var dataString = 'id='+ id;
+	
+			$.ajax({
+				type: "POST",
+				url: "models/chipmountNozzle/getID.php",
+				data: dataString,
+				cache: false,
+				success: function(html){
+					if (id == ""){
+						getresult("models/chipmountNozzle/pagiResChipmountNozzle.php"); // refresh the list
+						$(".pagination").css("display","");
+					}else{
+						$("#tbody2").html(html);
+						$(".pagination").css("display","none");
+						$(".tbody").html(html);
+					}
+				}
+			});
+		}
+	});
+
 $('#colletID').keypress(function (e) {
 	var key = e.which;
 	if(key == 13)  // the enter key code
@@ -2475,7 +2502,7 @@ $(document).on("change","input[type=file]",function () {
 	fileSize = ((fileSize/1000).toFixed(2));
 	fieldVal = fieldVal.replace("C:\\fakepath\\", "");
   
-	var fileType = ["txt","doc","docx","pdf","xlsx","csv","jpeg","jpg","png","bmp","msg","asc","zip","S"];
+	var fileType = ["txt","doc","docx","pdf","xlsx","csv","jpeg","jpg","png","bmp","msg","asc","zip","S","log","dlg"];
 	var fileTrue = true;
   
 	if (fieldVal != undefined || fieldVal != "") {

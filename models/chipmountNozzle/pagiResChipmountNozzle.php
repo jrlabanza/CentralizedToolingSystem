@@ -36,7 +36,7 @@ if($pagination_setting == "prev-next") {
 }
 
 if(!empty($perpageresult)) {
-	$output = '<nav aria-label="..."><ul class="pagination">' . $perpageresult . '</ul><button type="button" class="btn btn-link" onclick=location.href="models/nozzle/exportInventory.php">Download Inventory</button>';
+	$output = '<nav aria-label="..."><ul class="pagination">' . $perpageresult . '</ul><button type="button" class="btn btn-link" onclick=location.href="models/chipmountNozzle/exportInventory.php">Download Inventory</button>';
 	$output .= '';
 }else{
 	$output = '';
@@ -46,7 +46,6 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 	<thead id="thead" class="thead-light">
 		<tr>
 			<th scope="col" class="col-sm-0">BAG NO.</th>	
-			<th scope="col" class="col-sm-0">NOZZLE DESCRIPTION.</th>
 			<th scope="col" class="col-sm-0">NOZZLE TYPE</th>
 			<th scope="col" class="col-sm-0">NOZZLE PART NO.</th>
 			<th scope="col" class="col-sm-0">STATUS</th>
@@ -67,7 +66,6 @@ $output .= '<table id="keywords" class="table table-bordered table-sm-responsive
 			$output .= '
 					<tr style="cursor: pointer;">
 						<td class="lbID">' . $faq[$k]['box_no'] . '</td>	
-						<td class="srID">' . $faq[$k]['nzl_desc'] . '</td>	
 						<td class="pckgType">' . $faq[$k]['package'] . '</td>
 						<td class="srID">' . $faq[$k]['nozzle_partno'] . '</td>
 						<td class="stats">' . $faq[$k]['status'] . '</td>
